@@ -1,0 +1,63 @@
+button {
+    width: 100%;
+    font-size: 16px;
+    color: white;
+    border: none;
+    background-color: rgb(87, 98, 99);
+    margin-top: 4px;
+}
+
+body {
+    background-color: rgb(45, 51, 52);
+}
+
+* {
+    font-family: 'Source Code Pro', monospace;
+}
+
+img {
+    width: 190px;
+    margin-top: 2px;
+}
+
+.favs {
+    width: 16px;
+    margin-top: 0px;
+    margin-left: 2px;
+}
+
+.yuppa1 {
+    margin-top: 4px;
+    border: 2px solid rgb(87, 98, 99);
+    padding: 0px 0px;
+    /* background-color: green; */
+}
+
+.yuppa2 {
+    background-color: rgb(87, 98, 99);
+    color: white;
+    margin: 0px 0px 3px 0px;
+}
+
+.yuppa3 {
+    background-color: red;
+    color: green;
+}
+
+tr {
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+
+a {
+    color: white;
+}
+
+#tester {
+    color: white;
+}
+
+.delButton {
+    color: white;
+    float: right;
+}
