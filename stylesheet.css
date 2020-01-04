@@ -11,8 +11,11 @@ body {
     background-color: rgb(45, 51, 52);
 }
 
-* {
+*,
+a,
+#tester {
     font-family: 'Source Code Pro', monospace;
+    color: white;
 }
 
 img {
@@ -49,15 +52,39 @@ tr {
     padding: 0px 0px;
 }
 
-a {
-    color: white;
-}
-
-#tester {
-    color: white;
-}
-
 .delButton {
     color: white;
     float: right;
+}
+
+.inputBox {
+    background-color: rgb(87, 98, 99);
+    border-color: rgb(87, 98, 99);
+    border-style: none;
+}
+
+.submit {
+    background-color: green;
+    float: center;
+}
+
+.title {
+    font-size: 52px;
+    color: white;
+    margin: 0px 0px;
+}
+
+.subTitle {
+    text-align: center;
+    font-size: 10px;
+    margin: 0px 0px;
+}
+
+.yesBox {
+    background-color: green;
+    float: right;
+}
+
+::placeholder {
+    color: white;
 }
