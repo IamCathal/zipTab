@@ -9,7 +9,7 @@ function loadData() {
         for (let key in res) {
             // For every snapshot in the returned object
             output += `<div class="yuppa1"><table>`;
-            output += `<tr><div class="yuppa2"><a href="" id="${key}Link">${key}</a> <a class="delButton" id="${key}">x</a></div></tr>`;
+            output += `<tr><div class="yuppa2"><a href="" id="${key}Link" class="noUnderline">${key}</a> <a href="" class="delButton noUnderline" id="${key}Delete">x</a></div></tr>`;
 
             // For every link in one specific snapshot
             for (let i = 0; i < res[key].length; i++) {
@@ -76,17 +76,20 @@ document.getElementById("snapshot").addEventListener("click", function() {
      * When new snapshot is clicked, generate the box to enter it's details
      */
     let infoBox = document.getElementById("tester");
-
-    infoBox.innerHTML += `  <div class="yuppa1">
-                                <table>`;
-    infoBox.innerHTML += `            <tr>
-                                        <div class="yuppa2">
-                                            <input type="text" placeholder="Enter Name" id="snapshotNameBox" class="inputBox" maxlength="20" size="19">
-                                            <a href=""> <span class="yesBox" id="addSnapshot">Add</span> </a>
-                                        </div>
-                                    </tr>
-                                </table>
-                            </div>`;
+    console.log(infoBox.innerHTML);
+    if (!infoBox.innerHTML.includes("snapshotNameBox")) {
+        output = `  <div class="yuppa1">
+                    <table>
+                        <tr>
+                            <div class="yuppa2">
+                                    <input type="text" placeholder="Enter Name" id="snapshotNameBox" class="inputBox" maxlength="17" size="19">
+                                    <a href=""> <span class="yesBox" id="addSnapshot">Add</span> </a>
+                            </div>
+                        </tr>
+                    </table>
+                </div>`;
+        infoBox.innerHTML += output;
+    }
 });
 
 document.querySelector('#tester').addEventListener("click", function(e) {
@@ -97,15 +100,15 @@ document.querySelector('#tester').addEventListener("click", function(e) {
 
     /**
      * See if the ID has any data in our synced storage.
-     * The x buttons have their snapshots name as their ID,
-     * if it does have data it means the user wants to delete it.
+     * The x buttons have their delete at the end of their IDs,
+     * if it does have delete, delete the snapshot it references
      */
-    chrome.storage.sync.getBytesInUse(e.target.id, function(bytes) {
-        if (bytes > 0) {
-            chrome.storage.sync.remove(e.target.id);
+    if (e.target.id.includes("Delete")) {
+        const actualTargetName = e.target.id.slice(0, -6);
+        chrome.storage.sync.remove(actualTargetName).then((res) => {
             loadData();
-        }
-    });
+        });
+    }
 
     /**
      * If the ID includes "Link" (The buttons to open the snapshots)

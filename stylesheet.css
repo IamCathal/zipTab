@@ -40,6 +40,7 @@ img {
     background-color: rgb(87, 98, 99);
     color: white;
     margin: 0px 0px 3px 0px;
+    text-decoration: none;
 }
 
 .yuppa3 {
@@ -87,4 +88,8 @@ tr {
 
 ::placeholder {
     color: white;
+}
+
+.noUnderline {
+    text-decoration: none;
 }
